@@ -7,7 +7,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     ROLE_CHOICE = (
         ('customer', 'Customer'),
         ('vendor', 'Vendor'),
-        ('admin', 'Admin')
     )
     email = models.EmailField(max_length=254, unique=True)
     first_name = models.CharField(max_length=50)
