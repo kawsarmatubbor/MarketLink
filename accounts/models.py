@@ -2,16 +2,12 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from .manager import CustomUserManager
 
-# Custom user
+# Custom user model
 class CustomUser(AbstractBaseUser, PermissionsMixin):
-    ROLE_CHOICE = (
-        ('customer', 'Customer'),
-        ('vendor', 'Vendor'),
-    )
     email = models.EmailField(max_length=254, unique=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    role = models.CharField(max_length=20, choices=ROLE_CHOICE, default='customer')
+    role = models.CharField(max_length=20, default='customer')
     profile_picture = models.ImageField(upload_to="profile_picture/", null=True, blank=True)
     
     is_active = models.BooleanField(default=True)
