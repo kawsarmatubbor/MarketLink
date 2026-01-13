@@ -10,8 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 from datetime import timedelta
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -135,3 +139,9 @@ SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 }
+
+# sslcom
+SSLCOMMERZ_STORE_ID = os.getenv("SSLCOMMERZ_STORE_ID")
+SSLCOMMERZ_STORE_PASS = os.getenv("SSLCOMMERZ_STORE_PASS")
+
+BASE_URL = "http://127.0.0.1:8000"
